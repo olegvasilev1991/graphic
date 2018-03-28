@@ -1,15 +1,22 @@
 package sample.controller;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 
 public class Lab1Controller {
@@ -19,12 +26,14 @@ public class Lab1Controller {
 
     @FXML
     private URL location;
-
+    @FXML
+    private ImageView image;
     @FXML
     private Button button;
     @FXML
     private Button menu;
-
+    @FXML
+    private Button loadimage;
 
     @FXML
     void initialize() {
@@ -46,7 +55,22 @@ public class Lab1Controller {
             stage.setScene(new Scene(root));
             stage.show();
         });
+        loadimage.setOnAction(event->{
+            FileChooser fileChooser = new FileChooser();
+            Stage stage = new Stage();
+
+
+            File file = fileChooser.showOpenDialog(stage);
+            if (file != null) {
+                //openFile(file);
+            }
+            
+
+        });
     }
+
+
+
 
 
 }
