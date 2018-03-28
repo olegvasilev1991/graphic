@@ -11,23 +11,18 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Lab1Controller">
+<GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.controller.Lab1Controller">
   <children>
     <AnchorPane id="" minHeight="140.0" opacity="1.0" prefHeight="500.0" prefWidth="700.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <children>
-        <Button fx:id="button" layoutX="211.0" layoutY="394.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="278.0" text="Button" />
-        <ImageView fx:id="image" fitHeight="286.0" fitWidth="238.33333333333334" layoutX="55.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+        <Button fx:id="button" layoutX="211.0" layoutY="417.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="278.0" text="Button" />
+        <ImageView fx:id="image" fitHeight="350.0" fitWidth="700.0" layoutX="180.0" layoutY="15.0" mouseTransparent="false" pickOnBounds="true" preserveRatio="true" x="0.0">
           <image>
             <Image url="@../assets/no-translate-detected_318-45812.jpg" />
           </image>
         </ImageView>
-        <ImageView fitHeight="238.3333282470703" fitWidth="238.3333282470703" layoutX="407.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-            <Image url="@../assets/no-translate-detected_318-45812.jpg" />
-          </image>
-        </ImageView>
-        <Button fx:id="menu" layoutX="34.0" layoutY="394.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="83.0" text="Меню" />
-            <Button fx:id="loadimage" layoutX="111.0" layoutY="335.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Загрузить" />
+        <Button fx:id="menu" layoutX="34.0" layoutY="431.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="83.0" text="Меню" />
+        <Button fx:id="loadimage" layoutX="291.0" layoutY="369.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Загрузить" />
       </children>
       <rotationAxis>
         <Point3D x="1.0" y="1.0" z="1.0" />
