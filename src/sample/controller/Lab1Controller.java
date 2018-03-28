@@ -1,6 +1,6 @@
 package sample.controller;
 
-import java.awt.*;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import javafx.scene.image.ImageView;
 
 
 public class Lab1Controller {
@@ -61,8 +61,11 @@ public class Lab1Controller {
 
 
             File file = fileChooser.showOpenDialog(stage);
-            if (file != null) {
+            if(file != null) {
+                //image.setImage(file);
                 //openFile(file);
+                System.out.println(file.toString());
+                image.setImage(new ImageView(file.toURI().toString()));
             }
             
 
