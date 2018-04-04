@@ -42,6 +42,7 @@ public class MenuController {
             Parent root = Lab1.getRoot();
             Stage stage= new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Лабораторная работа№1");
             stage.show();
         });
 

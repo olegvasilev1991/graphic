@@ -13,16 +13,17 @@
 
 <GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.controller.Lab1Controller">
   <children>
-    <AnchorPane id="" minHeight="140.0" opacity="1.0" prefHeight="500.0" prefWidth="700.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <AnchorPane id="" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="140.0" mouseTransparent="false" opacity="1.0" pickOnBounds="true" prefHeight="500.0" prefWidth="700.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
       <children>
         <Button fx:id="button" layoutX="211.0" layoutY="417.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="278.0" text="Button" />
-        <ImageView fx:id="image" fitHeight="350.0" fitWidth="700.0" layoutX="180.0" layoutY="15.0" mouseTransparent="false" pickOnBounds="true" preserveRatio="true" x="0.0">
+        <ImageView fx:id="image" fitHeight="350.0" fitWidth="700.0" layoutX="175.5" layoutY="14.0" mouseTransparent="false" pickOnBounds="true" preserveRatio="true" scaleX="1.0" x="0.0">
           <image>
             <Image url="@../assets/no-translate-detected_318-45812.jpg" />
           </image>
         </ImageView>
         <Button fx:id="menu" layoutX="34.0" layoutY="431.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="83.0" text="Меню" />
         <Button fx:id="loadimage" layoutX="291.0" layoutY="369.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Загрузить" />
+        <Button fx:id="rotate" layoutX="542.0" layoutY="437.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Поворот" />
       </children>
       <rotationAxis>
         <Point3D x="1.0" y="1.0" z="1.0" />
