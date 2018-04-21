@@ -1,11 +1,10 @@
 package sample.controller;
 
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
-import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
@@ -14,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.image.Image;
 
 import javafx.stage.FileChooser;
@@ -26,11 +26,6 @@ import javafx.scene.image.ImageView;
 public class Lab1Controller {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-    @FXML
     private ImageView image;
     @FXML
     private Button button;
@@ -40,6 +35,10 @@ public class Lab1Controller {
     private Button loadimage;
     @FXML
     private Button rotate;
+    @FXML
+    private Button gray;
+
+    private Image img;
 
     @FXML
     void initialize() {
@@ -70,6 +69,12 @@ public class Lab1Controller {
             image.setRotate(image.getRotate()+90);
 
         });
+
+        gray.setOnAction(event -> {
+            System.out.println(img.getPixelReader().toString());
+            System.out.println(img.getPixelReader().getColor(1,10).grayscale().toString());
+
+        });
     }
 
 
@@ -82,7 +87,7 @@ public class Lab1Controller {
 
         if (file != null) {
             System.out.println(file.toString());
-            Image img = new Image(file.toURI().toString());
+            img = new Image(file.toURI().toString());
             image.setLayoutX(10);
             image.setLayoutY(15);
             image.setImage(img);
