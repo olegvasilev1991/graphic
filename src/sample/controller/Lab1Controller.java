@@ -1,10 +1,10 @@
 package sample.controller;
 
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 
 
 import javafx.event.ActionEvent;
@@ -20,7 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
-
+import javax.imageio.ImageIO;
 
 
 public class Lab1Controller {
@@ -39,6 +39,7 @@ public class Lab1Controller {
     private Button gray;
 
     private Image img;
+    private File file;
 
     @FXML
     void initialize() {
@@ -64,15 +65,40 @@ public class Lab1Controller {
         loadimage.setOnAction(this::handle);
 
         rotate.setOnAction(event -> {
-            System.out.println(image.getFitHeight()+" "+image.getFitWidth()+"  "+image.getRotate());
+            System.out.println(image.getFitHeight() + " " + image.getFitWidth() + "  " + image.getRotate());
 
-            image.setRotate(image.getRotate()+90);
+            image.setRotate(image.getRotate() + 90);
 
         });
 
         gray.setOnAction(event -> {
             System.out.println(img.getPixelReader().toString());
-            System.out.println(img.getPixelReader().getColor(1,10).grayscale().toString());
+            BufferedImage buffer = null;
+            try {
+                buffer = ImageIO.read(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Color color;
+            int gray;
+            for (int i = 0; i < buffer.getWidth(); i++)
+                for (int j = 0; j < buffer.getHeight(); j++) {
+                    color = new Color(buffer.getRGB(i, j));
+                    gray = (color.getBlue() + color.getGreen() + color.getRed()) / 3;
+                    color = new Color(gray, gray, gray);
+                    buffer.setRGB(i, j, color.getRGB());
+                }
+
+            // File fff = new File(file.toPath().toString(),"test.jpg");
+            System.out.println(file.getName().toString());
+            try {
+                ImageIO.write(buffer, "JPEG", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            img = new Image(file.toURI().toString());
+            image.setImage(img);
 
         });
     }
@@ -83,7 +109,7 @@ public class Lab1Controller {
         Stage stage = new Stage();
 
 
-        File file = fileChooser.showOpenDialog(stage);
+        file = fileChooser.showOpenDialog(stage);
 
         if (file != null) {
             System.out.println(file.toString());
@@ -91,8 +117,7 @@ public class Lab1Controller {
             image.setLayoutX(10);
             image.setLayoutY(15);
             image.setImage(img);
-            /*image.setFitHeight(350);
-            image.setFitWidth(350);*/
+
         }
     }
 }
