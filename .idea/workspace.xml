@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/graphic/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/graphic/sample/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/Lab1Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/Lab1Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/lab1.fxml" afterPath="$PROJECT_DIR$/src/sample/view/lab1.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/controller/Lab1Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="223">
-              <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+              <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -430,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524339258584</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="save image">
+      <created>1524387262753</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1524387262753</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -488,7 +493,8 @@
     <MESSAGE value="rotate image" />
     <MESSAGE value="fix" />
     <MESSAGE value="gray color" />
-    <option name="LAST_COMMIT_MESSAGE" value="gray color" />
+    <MESSAGE value="save image" />
+    <option name="LAST_COMMIT_MESSAGE" value="save image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -925,6 +931,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1377">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +960,7 @@
     <entry file="file://$PROJECT_DIR$/src/sample/controller/Lab1Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
-          <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

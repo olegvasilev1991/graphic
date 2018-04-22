@@ -47,18 +47,23 @@ public class Lab1Controller {
     void initialize() {
         button.setOnAction(event -> {
             System.out.println("hello");
+            try {
+                buffer = ImageIO.read(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle("Save Image");
-                Stage stage = new Stage();
-                File iii = fileChooser.showSaveDialog(stage);
-                if (iii != null) {
-                    try {
-                        ImageIO.write(buffer, "JPEG", iii);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Image");
+            Stage stage = new Stage();
+            File iii = fileChooser.showSaveDialog(stage);
+            if (iii != null) {
+                try {
+                    ImageIO.write(buffer, "JPEG", iii);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            }
 
         });
         menu.setOnAction(event -> {
