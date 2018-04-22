@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,11 +41,25 @@ public class Lab1Controller {
 
     private Image img;
     private File file;
+    private BufferedImage buffer = null;
 
     @FXML
     void initialize() {
         button.setOnAction(event -> {
             System.out.println("hello");
+
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Image");
+                Stage stage = new Stage();
+                File iii = fileChooser.showSaveDialog(stage);
+                if (iii != null) {
+                    try {
+                        ImageIO.write(buffer, "JPEG", iii);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
         });
         menu.setOnAction(event -> {
             menu.getScene().getWindow().hide();
@@ -73,7 +88,7 @@ public class Lab1Controller {
 
         gray.setOnAction(event -> {
             System.out.println(img.getPixelReader().toString());
-            BufferedImage buffer = null;
+
             try {
                 buffer = ImageIO.read(file);
             } catch (IOException e) {
@@ -90,14 +105,11 @@ public class Lab1Controller {
                     buffer.setRGB(i, j, color.getRGB());
                 }
 
-            // File fff = new File(file.toPath().toString(),"test.jpg");
+
             System.out.println(file.getName().toString());
-            try {
-                ImageIO.write(buffer, "JPEG", file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            img = new Image(file.toURI().toString());
+
+            img = SwingFXUtils.toFXImage(buffer, null);
+
             image.setImage(img);
 
         });
