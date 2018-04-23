@@ -17,9 +17,11 @@ import javafx.scene.control.Button;
 
 import javafx.scene.image.Image;
 
+import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
+
 
 import javax.imageio.ImageIO;
 
@@ -43,19 +45,32 @@ public class Lab1Controller {
     private File file;
     private BufferedImage buffer = null;
 
+
     @FXML
     void initialize() {
+        image.setOnMouseEntered(event->{
+            int x = (int)event.getX();
+            int y = (int)event.getY();
+           // BufferedImage rect = new BufferedImage();
+
+        });
+        image.setOnMouseMoved(event ->{
+            Rectangle rect = new Rectangle(5,5,50,50);
+
+        });
+        image.setOnMouseExited(event ->{
+
+        });
         button.setOnAction(event -> {
             System.out.println("hello");
-            try {
-                buffer = ImageIO.read(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save Image");
             Stage stage = new Stage();
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("JPG", "*.jpg")
+            );
+
             File iii = fileChooser.showSaveDialog(stage);
             if (iii != null) {
                 try {
@@ -85,20 +100,21 @@ public class Lab1Controller {
         loadimage.setOnAction(this::handle);
 
         rotate.setOnAction(event -> {
-            System.out.println(image.getFitHeight() + " " + image.getFitWidth() + "  " + image.getRotate());
+            System.out.println(image.getFitHeight() + " " + image.getFitWidth() + "  " + image.getRotate()+" ");
 
-            image.setRotate(image.getRotate() + 90);
+            BufferedImage newImage = new BufferedImage(buffer.getHeight(), buffer.getWidth(), buffer.getType());
 
+
+            for( int i=0; i < buffer.getWidth(); i++ )
+                for( int j=0 ; j < buffer.getHeight(); j++ )
+                    newImage.setRGB( buffer.getHeight()-1-j, i, buffer.getRGB(i,j) );
+            buffer = newImage;
+            img = SwingFXUtils.toFXImage(newImage, null);
+            image.setImage(img);
         });
 
         gray.setOnAction(event -> {
             System.out.println(img.getPixelReader().toString());
-
-            try {
-                buffer = ImageIO.read(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
             Color color;
             int gray;
@@ -114,9 +130,7 @@ public class Lab1Controller {
             System.out.println(file.getName().toString());
 
             img = SwingFXUtils.toFXImage(buffer, null);
-
             image.setImage(img);
-
         });
     }
 
@@ -134,7 +148,14 @@ public class Lab1Controller {
             image.setLayoutX(10);
             image.setLayoutY(15);
             image.setImage(img);
-
+            try {
+                buffer = ImageIO.read(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
+
+
+
 }
