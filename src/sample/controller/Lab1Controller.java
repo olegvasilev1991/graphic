@@ -40,19 +40,39 @@ public class Lab1Controller {
     private Button rotate;
     @FXML
     private Button gray;
+    @FXML
+    private Button point;
+    private Boolean Point = false;
+    private double x1,y1,x2,y2;
 
     private Image img;
     private File file;
     private BufferedImage buffer = null;
 
+    double distance(double x1, double y1, double x2, double y2){
+        double distance = Math.sqrt();
+
+
+        return distance;
+    }
 
     @FXML
     void initialize() {
-        image.setOnMouseEntered(event->{
-            int x = (int)event.getX();
-            int y = (int)event.getY();
-           // BufferedImage rect = new BufferedImage();
+        point.setOnAction(event->{
+            Point = true;
+        });
 
+        image.setOnMouseEntered(event->{
+            if(Point == true) {
+                if(x1 == null && y1 == null) {
+                    x1 = (int) event.getX();
+                    y1 = (int) event.getY();
+                } else {
+                    x2 = (int) event.getX();
+                    y2 = (int) event.getY();
+
+                }
+            }
         });
         image.setOnMouseMoved(event ->{
             Rectangle rect = new Rectangle(5,5,50,50);
