@@ -50,9 +50,7 @@ public class Lab1Controller {
     private BufferedImage buffer = null;
 
     double distance(double x1, double y1, double x2, double y2){
-        double distance = Math.sqrt();
-
-
+        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
         return distance;
     }
 
@@ -64,22 +62,20 @@ public class Lab1Controller {
 
         image.setOnMouseEntered(event->{
             if(Point == true) {
-                if(x1 == null && y1 == null) {
-                    x1 = (int) event.getX();
-                    y1 = (int) event.getY();
-                } else {
-                    x2 = (int) event.getX();
-                    y2 = (int) event.getY();
-
-                }
+                x1 = (int) event.getX();
+                y1 = (int) event.getY();
+                System.out.println(x1+" "+y1);
             }
         });
         image.setOnMouseMoved(event ->{
-            Rectangle rect = new Rectangle(5,5,50,50);
 
         });
         image.setOnMouseExited(event ->{
-
+            if(Point == true){
+                x2 = (int) event.getX();
+                y2 = (int) event.getY();
+                System.out.println(x2+" "+y2);
+            }
         });
         button.setOnAction(event -> {
             System.out.println("hello");
