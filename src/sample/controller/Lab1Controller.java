@@ -2,6 +2,8 @@ package sample.controller;
 
 
 import java.awt.*;
+
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,15 +11,18 @@ import java.io.IOException;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.image.Image;
 
-import javafx.scene.image.WritableImage;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
@@ -26,8 +31,11 @@ import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
 
 
+
 public class Lab1Controller {
 
+    @FXML
+    private Button gist;
     @FXML
     private ImageView image;
     @FXML
@@ -49,32 +57,68 @@ public class Lab1Controller {
     private File file;
     private BufferedImage buffer = null;
 
+    int brightness(int r,int g, int b){
+        int brig = (int)(0.3*r + 0.59*g + 0.11*b);
+        return brig;
+    }
+
+
     double distance(double x1, double y1, double x2, double y2){
-        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        double m = img.getHeight()/image.getFitHeight();
+        double n = img.getWidth()/image.getFitWidth();
+        double distance = Math.sqrt(Math.pow((x1 - x2)*n, 2) + Math.pow((y1 - y2)*m, 2));
         return distance;
     }
 
+
     @FXML
     void initialize() {
-        point.setOnAction(event->{
-            Point = true;
-        });
+        gist.setOnAction(event -> {
+            int gistogramma[] = new int[255];
+        /*    for(int i; i<img.getHeight(); i++)
+                for(int j;j<img.getWidth(); j++)
+                    gistogramma[brightness((int)img.getPixelReader().getColor(i,j).getRed())]*/
+            System.out.println(
+                    buffer.getGraphics().getColor().getRed()+
+                    buffer.getGraphics().getColor().getGreen()+
+                    buffer.getGraphics().getColor().getBlue()+" "
+            );
 
-        image.setOnMouseEntered(event->{
+        });
+        point.setOnAction(event->{
+            if(Point == false)
+                Point = true;
+            else Point = false;
+        });
+        image.setOnMouseClicked(event -> {
+            System.out.println("Clicked!"); // change functionality
+        });
+        image.setOnMousePressed(event->{
             if(Point == true) {
                 x1 = (int) event.getX();
                 y1 = (int) event.getY();
                 System.out.println(x1+" "+y1);
             }
         });
-        image.setOnMouseMoved(event ->{
 
-        });
-        image.setOnMouseExited(event ->{
+
+
+        image.setOnMouseReleased(event ->{
             if(Point == true){
                 x2 = (int) event.getX();
                 y2 = (int) event.getY();
-                System.out.println(x2+" "+y2);
+
+                double m = img.getHeight()/image.getFitHeight();
+                double n = img.getWidth()/image.getFitWidth();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Растояние");
+                alert.setHeaderText("Результат:");
+                alert.setContentText("Точка 1: Х="+x1*n+" Y="+y1*m+"\n"+
+                "Точка 2: Х="+x2*n+" Y="+y2*m+
+                        "\nРастояние между точками "+distance(x1,y1,x2,y2)+" пикселей"
+                );
+
+                alert.showAndWait();
             }
         });
         button.setOnAction(event -> {
