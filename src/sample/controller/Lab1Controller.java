@@ -74,14 +74,28 @@ public class Lab1Controller {
     @FXML
     void initialize() {
         gist.setOnAction(event -> {
-            int gistogramma[] = new int[255];
-        /*    for(int i; i<img.getHeight(); i++)
-                for(int j;j<img.getWidth(); j++)
-                    gistogramma[brightness((int)img.getPixelReader().getColor(i,j).getRed())]*/
+            int gistogramma[] = new int[256];
+            int max_gistogramma=0;
+            for(int i=0; i< buffer.getHeight(); i++)
+                for(int j=0; j< buffer.getWidth(); j++){
+                    int red = (buffer.getRGB(j,i) >> 16) & 0xff;
+                    int green = (buffer.getRGB(j,i) >> 8) & 0xff;
+                    int blue = buffer.getRGB(j,i) & 0xff;
+                    gistogramma[brightness(red,green,blue)]++;
+
+                }
+            for(int i=0; i<255; i++){
+                if (gistogramma[i] > max_gistogramma)
+                    max_gistogramma = gistogramma[i];
+                System.out.println(gistogramma[i]);
+            }
+
+
+
+
             System.out.println(
-                    buffer.getGraphics().getColor().getRed()+
-                    buffer.getGraphics().getColor().getGreen()+
-                    buffer.getGraphics().getColor().getBlue()+" "
+                    img.getPixelReader().getColor(1,1)+"   "+buffer.getRGB(1,1)+"\n"
+
             );
 
         });
