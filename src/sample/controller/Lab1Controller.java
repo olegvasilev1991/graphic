@@ -90,15 +90,15 @@ public class Lab1Controller {
                     max_gistogramma = gistogramma[i];
                 //System.out.println(gistogramma[i]);
             }
-            BufferedImage gist = new BufferedImage(255, 100, BufferedImage.TYPE_INT_RGB);
+            BufferedImage gist = new BufferedImage(255, 100, BufferedImage.TYPE_INT_ARGB);
 
             for(int i=0;i<255;i++) {
 
                 double a = ((double) gistogramma[i] / (double) max_gistogramma * 100);
                 System.out.println(gistogramma[i]+" "+a);
                 for (int j = 0; j < (int)a; j++) {
-                    gist.setRGB(i, j, 0xfffffff);
-                    System.out.println(i + " " + j + " " + gist.getWidth() + " " + max_gistogramma);
+                    gist.setRGB(i, j, 0x000000);
+                    //System.out.println(i + " " + j + " " + gist.getWidth() + " " + max_gistogramma);
                 }
             }
 
