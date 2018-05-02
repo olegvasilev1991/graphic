@@ -87,11 +87,17 @@ public class Lab1Controller {
             for(int i=0; i<255; i++){
                 if (gistogramma[i] > max_gistogramma)
                     max_gistogramma = gistogramma[i];
-                System.out.println(gistogramma[i]);
+                //System.out.println(gistogramma[i]);
             }
+            BufferedImage gist = new BufferedImage(2550, max_gistogramma, BufferedImage.TYPE_INT_RGB);
+            /*for(int i=0;i<2550;i++)
+                for(int j=0;j<gistogramma[i/10];j++){
+                    gist.setRGB(i,j,0x000000);
 
-
-
+                }*/
+            gist.createGraphics().setBackground(Color.BLACK);
+            img = SwingFXUtils.toFXImage(gist, null);
+            image.setImage(img);
 
             System.out.println(
                     img.getPixelReader().getColor(1,1)+"   "+buffer.getRGB(1,1)+"\n"
