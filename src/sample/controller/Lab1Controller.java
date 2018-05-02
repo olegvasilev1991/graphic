@@ -5,6 +5,7 @@ import java.awt.*;
 
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.io.File;
 import java.io.IOException;
 
@@ -89,20 +90,25 @@ public class Lab1Controller {
                     max_gistogramma = gistogramma[i];
                 //System.out.println(gistogramma[i]);
             }
-            BufferedImage gist = new BufferedImage(2550, max_gistogramma, BufferedImage.TYPE_INT_RGB);
-            /*for(int i=0;i<2550;i++)
-                for(int j=0;j<gistogramma[i/10];j++){
-                    gist.setRGB(i,j,0x000000);
+            BufferedImage gist = new BufferedImage(255, 100, BufferedImage.TYPE_INT_RGB);
 
-                }*/
-            gist.createGraphics().setBackground(Color.BLACK);
+            for(int i=0;i<255;i++) {
+
+                double a = ((double) gistogramma[i] / (double) max_gistogramma * 100);
+                System.out.println(gistogramma[i]+" "+a);
+                for (int j = 0; j < (int)a; j++) {
+                    gist.setRGB(i, j, 0xfffffff);
+                    System.out.println(i + " " + j + " " + gist.getWidth() + " " + max_gistogramma);
+                }
+            }
+
             img = SwingFXUtils.toFXImage(gist, null);
             image.setImage(img);
 
-            System.out.println(
+            /*System.out.println(
                     img.getPixelReader().getColor(1,1)+"   "+buffer.getRGB(1,1)+"\n"
 
-            );
+            );*/
 
         });
         point.setOnAction(event->{
