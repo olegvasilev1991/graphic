@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.controller.Lab1Controller">
+<GridPane alignment="TOP_CENTER" hgap="10.0" prefHeight="500.0" prefWidth="700.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Lab1Controller">
   <children>
     <AnchorPane id="" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="140.0" mouseTransparent="false" opacity="1.0" pickOnBounds="true" prefHeight="500.0" prefWidth="700.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       <children>
@@ -27,6 +27,8 @@
         <Button fx:id="gray" layoutX="542.0" layoutY="400.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="107.0" text="Серый цвет" />
         <Button fx:id="point" layoutX="612.0" layoutY="28.0" mnemonicParsing="false" text="Указатель" />
         <Button fx:id="gist" layoutX="536.0" layoutY="369.0" mnemonicParsing="false" prefHeight="21.000099999997474" prefWidth="119.0" text="Гистограмма" />
+            <Button fx:id="imagelast" layoutX="34.0" layoutY="382.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Картинка" />
+            <Button fx:id="curtimage" layoutX="612.0" layoutY="69.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="89.0" text="Обрезать" />
       </children>
       <rotationAxis>
         <Point3D x="1.0" y="1.0" z="1.0" />
