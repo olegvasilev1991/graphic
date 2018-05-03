@@ -135,7 +135,6 @@ public class Lab1Controller {
                 y1 = (int) event.getY();
                 System.out.println(x1+" "+y1);
             }
-
         });
 
 
