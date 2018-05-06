@@ -4,6 +4,7 @@ package sample.controller;
 import java.awt.*;
 
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.io.File;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -40,6 +42,8 @@ public class Lab1Controller {
     @FXML
     private Button curtimage;
     @FXML
+    private ImageView cut;
+    @FXML
     private Button gist;
     @FXML
     private ImageView image;
@@ -57,6 +61,7 @@ public class Lab1Controller {
     private Button point;
     private Boolean Point = false;
     private double x1,y1,x2,y2;
+
 
     private Image img;
     private File file;
@@ -98,27 +103,24 @@ public class Lab1Controller {
             for(int i=0; i<255; i++){
                 if (gistogramma[i] > max_gistogramma)
                     max_gistogramma = gistogramma[i];
-                //System.out.println(gistogramma[i]);
+
             }
             BufferedImage gist = new BufferedImage(255, 100, BufferedImage.TYPE_INT_RGB);
 
             for(int i=0;i<255;i++) {
 
                 double a = ((double) gistogramma[i] / (double) max_gistogramma * 100);
-                //System.out.println(gistogramma[i]+" "+a);
+
                 for (int j = 0; j < 100-(int)a; j++) {
                     gist.setRGB(i, j, 0xffffff);
-                    //System.out.println(i + " " + j + " " + gist.getWidth() + " " + max_gistogramma);
+
                 }
             }
 
             img = SwingFXUtils.toFXImage(gist, null);
             image.setImage(img);
 
-            /*System.out.println(
-                    img.getPixelReader().getColor(1,1)+"   "+buffer.getRGB(1,1)+"\n"
 
-            );*/
 
         });
         point.setOnAction(event->{
@@ -135,6 +137,26 @@ public class Lab1Controller {
                 y1 = (int) event.getY();
                 System.out.println(x1+" "+y1);
             }
+            x1 = (int) event.getX();
+            y1 = (int) event.getY();
+
+
+
+            cut.setX(x1);
+            cut.setY(y1);
+            cut.setFitWidth(1);
+            cut.setFitHeight(1);
+            BufferedImage cutt = new BufferedImage(1,1,BufferedImage.TYPE_BYTE_GRAY);
+            cutt.setRGB(0,0,127);
+            Image cute = SwingFXUtils.toFXImage(cutt, null);
+
+            cut.setImage(cute);
+
+
+        });
+        image.setOnMouseDragged(event -> {
+                cut.setFitWidth(event.getX() - x1);
+                cut.setFitHeight(event.getY() - y1);
         });
 
 
@@ -154,6 +176,7 @@ public class Lab1Controller {
                 "Точка 2: Х="+x2*n+" Y="+y2*m+
                         "\nРастояние между точками "+distance(x1,y1,x2,y2)+" пикселей"
                 );
+
                 alert.showAndWait();
             }
 
