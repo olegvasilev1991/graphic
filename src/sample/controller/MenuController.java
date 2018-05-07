@@ -23,6 +23,10 @@ public class MenuController {
     @FXML
     private Button lab1;
 
+
+    @FXML
+    private Button lab2;
+
     @FXML
     private AnchorPane menu;
 
@@ -43,6 +47,23 @@ public class MenuController {
             Stage stage= new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Лабораторная работа№1");
+            stage.show();
+        });
+
+        lab2.setOnAction(event -> {
+            lab1.getScene().getWindow().hide();
+            FXMLLoader Lab2 = new FXMLLoader();
+            Lab2.setLocation(getClass().getResource("/sample/view/lab2.fxml"));
+
+            try {
+                Lab2.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = Lab2.getRoot();
+            Stage stage= new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Лабораторная работа№2");
             stage.show();
         });
 
